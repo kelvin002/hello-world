@@ -9,12 +9,12 @@ const body_parser = require('body-parser');
 // our API routes go here
 
 server.get("/items", (req, res) => {
-   res.json(data);
+   res.json(data1);
 });
 
 server.get("/items/:id", (req, res) => {
    const itemId = req.params.id;
-   const item = data.find(_item => _item.id === itemId);
+   const item = data1.find(_item => _item.id === itemId);
 
    if (item) {
       res.json(item);
@@ -31,10 +31,10 @@ server.post("/items", (req, res) => {
    console.log('Adding new item: ', item);
 
    // add new item to array
-   data.push(item)
+   data1.push(item)
 
    // return updated list
-   res.json(data);
+   res.json(data1);
 });
 
 // curl -X POST -H "Content-Type: application/json" --data '{"id": "tt0109830", "name": "Forrest Gump", "genre": "drama"}' http://localhost:4000/items
@@ -59,7 +59,7 @@ server.put("/items/:id", (req, res) => {
    });
    // replace old list with new one
    data = updatedListItems;
-   res.json(data);
+   res.json(data1);
 });
 
 // curl -X PUT -H "Content-Type: application/json" --data '{"id": "tt0468569", "name": "The Dark Knight", "genre": "drama"}' http://localhost:4000/items/tt0468569
@@ -72,12 +72,12 @@ server.delete("/items/:id", (req, res) => {
    console.log("Delete item with id: ", itemId);
 
    // filter list copy, by excluding item to delete
-   const filtered_list = data.filter(item => item.id !== itemId);
+   const filtered_list = data1.filter(item => item.id !== itemId);
 
    // replace old list with new one
-   data = filtered_list;
+   data1 = filtered_list;
 
-   res.json(data);
+   res.json(data1);
 });
 
 //curl -X DELETE http://localhost:4000/items/tt0468569
